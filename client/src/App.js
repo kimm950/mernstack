@@ -12,13 +12,31 @@ function App() {
     Axios.post('http://localhost:3001/addfriend', {
       name: name,
       age: age
-    }).then(() => {
-      alert('yay it works@!!!');
-      getFriend()
+    }).then((res) => {
+      setFriends([...friends, { _id: res.data._id, name: name, age: age }])
     }).catch(() => {
       alert('OHHHH NOOOOO');
     });
   };
+
+  function updateFriend(id) { 
+    const newAge = prompt('enter New Age');
+    Axios.put('http://localhost:3001/update', { newAge: newAge, id: id })
+      .then(() => {
+        setFriends(friends.map((friend) => {
+          return friend._id === id ? {_id: id, name: friend.name, age: newAge} : friend
+        })) 
+      })
+  }
+
+  function deleteFriend(id) { 
+    Axios.delete(`http://localhost:3001/remove/${id}`)
+      .then(() => { 
+        setFriends(friends.filter((friend) => {
+          return friend._id !== id
+        }))
+      })
+  }
 
   function getFriend() { 
     Axios.get('http://localhost:3001/read')
@@ -46,13 +64,20 @@ function App() {
 
         <button onClick={addFriend}>Add Friend</button>
       </div>
-      <ul>
-        {friends.map((friend, id) => {
-          return(
-            <li key={id}>
-              {friend.name}
-              {friend.age}
-            </li>
+      <ul className='friend-list'>
+        {friends && friends.map((friend, _id) => {
+          return (
+            <div className='friend-group'>
+              <li
+                key={_id}
+                className='friend-item'
+              >
+              <h3>Name: {friend.name}</h3>
+              <h3>Age: {friend.age}</h3>
+              </li>
+              <button onClick={() => updateFriend(friend._id)}>Update</button>
+              <button onClick={() => deleteFriend(friend._id)}>Delete</button>
+          </div>
         )
         })}
     </ul>

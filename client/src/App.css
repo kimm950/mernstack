@@ -40,3 +40,23 @@ body {
 .inputs button:hover {
   cursor: pointer;
 }
+
+.friend-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.friend-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.friend-item{
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+  background-color: yellow;
+}
