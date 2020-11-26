@@ -1,12 +1,19 @@
 import './App.css';
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 
-function App() {
+interface IFriend { 
+  _id: number,
+  name: string,
+  age: string | number | null,
+}
 
-  const [name, setName] = useState('');
-  const [age, setAge] = useState(0);
-  const [friends, setFriends] = useState([]);
+
+export default function App() {
+
+  const [name, setName] = useState<string>('');
+  const [age, setAge] = useState<number | string>(0);
+  const [friends, setFriends] = useState<IFriend[]>([]);
 
   function addFriend() { 
     Axios.post('http://localhost:3001/addfriend', {
@@ -19,7 +26,7 @@ function App() {
     });
   };
 
-  function updateFriend(id) { 
+  function updateFriend(id: number): void { 
     const newAge = prompt('enter New Age');
     Axios.put('http://localhost:3001/update', { newAge: newAge, id: id })
       .then(() => {
@@ -29,7 +36,7 @@ function App() {
       })
   }
 
-  function deleteFriend(id) { 
+  function deleteFriend(id: number) { 
     Axios.delete(`http://localhost:3001/remove/${id}`)
       .then(() => { 
         setFriends(friends.filter((friend) => {
@@ -84,5 +91,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
