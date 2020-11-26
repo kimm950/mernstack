@@ -8,15 +8,16 @@ interface IFriend {
   age: string | number | null,
 }
 
-
 export default function App() {
 
   const [name, setName] = useState<string>('');
   const [age, setAge] = useState<number | string>(0);
   const [friends, setFriends] = useState<IFriend[]>([]);
 
+  const endpoint = 'http://localhost:3001'
+
   function addFriend() { 
-    Axios.post('http://localhost:3001/addfriend', {
+    Axios.post(`${endpoint}/addfriend`, {
       name: name,
       age: age
     }).then((res) => {
@@ -28,7 +29,7 @@ export default function App() {
 
   function updateFriend(id: number): void { 
     const newAge = prompt('enter New Age');
-    Axios.put('http://localhost:3001/update', { newAge: newAge, id: id })
+    Axios.put(`${endpoint}/update`, { newAge: newAge, id: id })
       .then(() => {
         setFriends(friends.map((friend) => {
           return friend._id === id ? {_id: id, name: friend.name, age: newAge} : friend
@@ -37,7 +38,7 @@ export default function App() {
   }
 
   function deleteFriend(id: number) { 
-    Axios.delete(`http://localhost:3001/remove/${id}`)
+    Axios.delete(`${endpoint}/remove/${id}`)
       .then(() => { 
         setFriends(friends.filter((friend) => {
           return friend._id !== id
@@ -46,7 +47,7 @@ export default function App() {
   }
 
   function getFriend() { 
-    Axios.get('http://localhost:3001/read')
+    Axios.get(`${endpoint}/read`)
       .then((res) => { 
         setFriends(res.data)
       })
