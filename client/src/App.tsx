@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
+import logo from './asset/mern.png'
 
 interface IFriend { 
   _id: number,
@@ -88,7 +89,11 @@ export default function App() {
             </div>
         )
         })}
-    </ul>
+          <img src={logo} alt="logo" />
+      </ul>
+      <a href='https://github.com/kimm950' target='blank'>
+        <button className='profile-button'>About me</button>
+      </a>
     </div>
   );
 }
