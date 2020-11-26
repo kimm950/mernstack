@@ -18,7 +18,7 @@ app.post('/addfriend', async (req, res,) => {
 
   const friend = new FriendModel({ name: name, age: age });
   await friend.save();
-  res.send('SUCCESS')
+  res.send(friend)
 });
 
 app.get('/read', async (req, res,) => {
@@ -30,6 +30,27 @@ app.get('/read', async (req, res,) => {
     }
   })
 });
+
+app.put('/update', async (req, res) => { 
+  const newAge = req.body.newAge
+  const id = req.body.id
+  try {
+    await FriendModel.findById(id, (error, friendToUpdate) => {
+      friendToUpdate.age = parseInt(newAge);
+      friendToUpdate.save();
+    })
+  } catch (err) { 
+    console.log(err)
+  }
+  res.send('UPDATED')
+})
+
+app.delete('/remove/:id', async (req, res) => { 
+  const id = req.params.id
+
+  await FriendModel.findByIdAndRemove(id).exec()
+  res.send('DELETED')
+})
 
 app.listen(3001, () => {
   console.log('you are conncted')
