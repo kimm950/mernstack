@@ -62,11 +62,11 @@ export default function App() {
     <div className="App">
       <div className='inputs'>
         <input type='text'
-          placeholder='friend name...'
+          placeholder='Friend name...'
           onChange={(evt) => { setName(evt.target.value) }}
         />
         <input type='number'
-          placeholder='firend age'
+          placeholder='Friend age'
           onChange={(evt) => { setAge(evt.target.value) }}
         />
 
@@ -83,9 +83,9 @@ export default function App() {
               <h3>Name: {friend.name}</h3>
               <h3>Age: {friend.age}</h3>
               </li>
-              <button onClick={() => updateFriend(friend._id)}>Update</button>
-              <button onClick={() => deleteFriend(friend._id)}>Delete</button>
-          </div>
+              <button className='update-button' onClick={() => updateFriend(friend._id)}>✎</button>
+              <button className='delete-button' onClick={() => deleteFriend(friend._id)}>⌫</button>
+            </div>
         )
         })}
     </ul>

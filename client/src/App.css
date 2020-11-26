@@ -1,12 +1,10 @@
 .App {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
 }
 
 body {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .inputs {
@@ -16,34 +14,34 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(255, 123, 0);
+  background-color: #212121;
 }
 
 .inputs input {
-  width: 200px;
+  width: 190px;
   height: 50px;
   font-size: 18px;
-  margin: 10px;
+  margin-bottom: 10px;
   padding-left: 10px;
+  border-radius: 5px;
 }
 
 .inputs button {
   border: none;
-  width: 150px;
+  width: 200px;
   height: 50px;
-  background-color: green;
-  color: white;
+  background-color: #212121;
+  color: #fff;
   font-size: 18px;
-  border-radius: 10px;
+  border: 5px solid #fff;
+  border-radius: 5px;
 }
 
 .inputs button:hover {
   cursor: pointer;
-}
-
-.friend-group {
-  display: flex;
-  flex-direction: row;
+  background-color: #fff;
+  color: #212121;
+  transition: 0.5s all;
 }
 
 .friend-list {
@@ -51,12 +49,33 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0;
+  padding: 10px;
 }
 
-.friend-item{
-  margin: 10px;
+.friend-group {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.friend-item {
+  padding: 10px;
   width: 200px;
   height: 100px;
-  background-color: yellow;
+  color: #fff;
+  background-color: #212121;
+  border-radius: 5px 0 0 5px;
+}
+
+.friend-group button {
+  color: #fff;
+  font-size: 30px;
+}
+
+.update-button {
+  background-color: rgba(255, 145, 0, 0.918);
+}
+
+.delete-button {
+  background-color: rgb(212, 34, 28);
 }
