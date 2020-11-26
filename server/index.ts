@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose');
-const FriendModel = require('./models/friends');
+const FriendModel = require('./models/friends.ts');
 
 app.use(cors());
 app.use(express.json());
