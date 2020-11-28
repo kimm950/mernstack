@@ -6,11 +6,15 @@
 ```
 cd client
 yarn start
+
+deploy: netlify
 ```
 ### Backend: Express x Typescript
 ```
 cd server
 node index.ts
+
+deploy: heroku
 ```
 ### DB: MongoDB
 ```
@@ -18,6 +22,8 @@ Used:
 
 Mongoose
 MongoDB Compass
+
+MongoDB Cloud (Atlas)
 ```
 
 Simple node x react `CRUD` application
