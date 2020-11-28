@@ -58,6 +58,10 @@ export default function App() {
   };
 
   useEffect(getFriend, []);
+  useEffect(() => { 
+    const reRender = setInterval(() => getFriend(), 5000);    
+    return () => clearInterval(reRender);
+  }, [])
 
   return (
     <div className="App">
