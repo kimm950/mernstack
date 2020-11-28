@@ -15,7 +15,7 @@ export default function App() {
   const [age, setAge] = useState<number | string>(0);
   const [friends, setFriends] = useState<IFriend[]>([]);
 
-  const endpoint = 'http://localhost:3001'
+  const endpoint = 'https://mern-baby.herokuapp.com'
 
   function addFriend() { 
     Axios.post(`${endpoint}/addfriend`, {
