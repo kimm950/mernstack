@@ -21,3 +21,5 @@ MongoDB Compass
 ```
 
 Simple node x react `CRUD` application
+
+![alt text](https://blog.hyperiondev.com/wp-content/uploads/2018/09/Blog-Article-MERN-Stack.jpg)
